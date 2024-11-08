@@ -1,15 +1,27 @@
 {
-  "name": "elysia-better-auth",
-  "version": "1.0.50",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
-  },
-  "dependencies": {
-    "elysia": "latest"
-  },
-  "devDependencies": {
-    "bun-types": "latest"
-  },
-  "module": "src/index.js"
+	"name": "elysia-better-auth",
+	"version": "1.0.50",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "bun run --watch src/index.ts",
+		"build": "bun build --compile --minify-whitespace --minify-syntax --target bun --outfile server ./src/index.ts",
+		"lint": "biome check .",
+		"format": "biome check . --write"
+	},
+	"dependencies": {
+		"@elysiajs/cors": "^1.1.1",
+		"@elysiajs/swagger": "^1.1.5",
+		"@libsql/client": "^0.14.0",
+		"better-auth": "^0.7.6-beta.1",
+		"dotenv": "^16.4.5",
+		"drizzle-orm": "^0.36.1",
+		"elysia": "latest",
+		"zod": "^3.23.8"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"bun-types": "latest",
+		"drizzle-kit": "^0.28.0"
+	},
+	"module": "src/index.js"
 }
