@@ -14,4 +14,5 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: oven-sh/setup-bun@v2
-      - run: bun run lint
+      - run: bun i
+      - run: bun biome ci .
