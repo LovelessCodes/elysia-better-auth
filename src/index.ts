@@ -1,8 +1,8 @@
 import { cors } from "@elysiajs/cors";
 import { swagger } from "@elysiajs/swagger";
 import { type Context, Elysia } from "elysia";
-import { auth } from "./auth";
 import { z } from "zod";
+import { auth } from "./auth";
 
 const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(",") || [];
 
@@ -34,33 +34,33 @@ const app = new Elysia()
 			credentials: true,
 		}),
 	)
-	.use(swagger({
-    documentation: {
-      info: {
-        title: "Elysia x Better Auth",
-        version: "0.0.1",
-        description: "An example of Elysia x Better Auth",
-      },
-      tags: [
-        { name: 'App', description: 'General endpoints' },
-      ]
-    },
-  }))
-  .get("/", () => "Hello Elysia x Better Auth! 🦊", {
-    detail: {
-      tags: ["App"],
-      responses: {
-        200: {
-          description: "Hello response",
-          content: {
-            "text/plain": {
-              example: "Hello Elysia x Better Auth! 🦊",
-            },
-          },
-        },
-      },
-    },
-  })
+	.use(
+		swagger({
+			documentation: {
+				info: {
+					title: "Elysia x Better Auth",
+					version: "0.0.1",
+					description: "An example of Elysia x Better Auth",
+				},
+				tags: [{ name: "App", description: "General endpoints" }],
+			},
+		}),
+	)
+	.get("/", () => "Hello Elysia x Better Auth! 🦊", {
+		detail: {
+			tags: ["App"],
+			responses: {
+				200: {
+					description: "Hello response",
+					content: {
+						"text/plain": {
+							example: "Hello Elysia x Better Auth! 🦊",
+						},
+					},
+				},
+			},
+		},
+	})
 	.all("/api/auth/*", betterAuthView)
 	.listen(3131);
 
